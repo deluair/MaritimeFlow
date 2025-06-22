@@ -1,0 +1,2556 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_4d8e555bf5ad36669fb1aefa554b443b {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+        <div style="position: fixed; 
+                    top: 10px; right: 10px; width: 320px; height: auto; 
+                    background-color: white; border:2px solid grey; z-index:9999; 
+                    font-size:13px; padding: 10px; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        
+        <h4>🚢 Strait of Hormuz Live Monitor</h4>
+        <p style="color: #e74c3c;"><b>Critical Energy Chokepoint</b></p>
+        
+        <div style="background-color: #f8f9fa; padding: 8px; border-radius: 3px; margin: 5px 0;">
+        <b>Total Vessels:</b> 48<br>
+        <b>Moving:</b> 48 | <b>Anchored:</b> 0<br>
+        <b>Avg Speed:</b> 16.8 knots
+        </div>
+        
+        <h5>🚢 Fleet Composition:</h5>
+        <div>⛽ Lpg Tanker: <b>6</b></div><div>🛢️ Tanker: <b>11</b></div><div>🚤 Patrol: <b>5</b></div><div>🚢 Container: <b>10</b></div><div>📦 Cargo: <b>8</b></div><div>⚫ Bulk Carrier: <b>7</b></div><div>⚓ Military: <b>1</b></div>
+        <hr style="margin: 8px 0;">
+        <h5>💰 Economic Impact (Estimated):</h5>
+        <div style="background-color: #fff3cd; padding: 5px; border-radius: 3px; font-size: 12px;">
+        Oil/Gas: <b>$1.1B</b><br>
+        Cargo: <b>$0.9B</b><br>
+        <b>Total Transit Value: $2.0B</b>
+        </div>
+        
+        <hr style="margin: 8px 0;">
+        <h5>📊 Strategic Data:</h5>
+        <div style="font-size: 11px; color: #666;">
+        • 21% of global petroleum liquids<br>
+        • 15.5M barrels/day oil flow<br>
+        • $1.2T annual trade volume<br>
+        • 21nm narrowest width<br>
+        • Iran-Oman maritime border
+        </div>
+        
+        <hr style="margin: 8px 0;">
+        <div style="font-size: 10px; color: #888;">
+        <b>Data Sources:</b> 1 APIs<br>
+        <i>Last Update: 13:13:13 UTC</i>
+        </div>
+        </div>
+        
+    
+            <div class="folium-map" id="map_4d8e555bf5ad36669fb1aefa554b443b" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_4d8e555bf5ad36669fb1aefa554b443b = L.map(
+                "map_4d8e555bf5ad36669fb1aefa554b443b",
+                {
+                    center: [26.3, 56.5],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_1416cb2c98d54d89b98c94f55a23b9dc = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_1416cb2c98d54d89b98c94f55a23b9dc.addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var tile_layer_7fbdaf85ecc33bca94cc5c94bf370d6a = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Esri",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_7fbdaf85ecc33bca94cc5c94bf370d6a.addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var marker_424658f8afe14e9e888e788dd89f5ec5 = L.marker(
+                [27.1833, 56.2667],
+                {
+}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var icon_d2045231a9bbffc7f60bd09e860ab4e9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8821963e5d74bedd03ba6c7ef6eaf45f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_388eea4a2f55231ee5bec3b5eb7f37a8 = $(`<div id="html_388eea4a2f55231ee5bec3b5eb7f37a8" style="width: 100.0%; height: 100.0%;"><b>Bandar Abbas Port</b></div>`)[0];
+                popup_8821963e5d74bedd03ba6c7ef6eaf45f.setContent(html_388eea4a2f55231ee5bec3b5eb7f37a8);
+            
+        
+
+        marker_424658f8afe14e9e888e788dd89f5ec5.bindPopup(popup_8821963e5d74bedd03ba6c7ef6eaf45f)
+        ;
+
+        
+    
+    
+            marker_424658f8afe14e9e888e788dd89f5ec5.bindTooltip(
+                `<div>
+                     Bandar Abbas Port
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_424658f8afe14e9e888e788dd89f5ec5.setIcon(icon_d2045231a9bbffc7f60bd09e860ab4e9);
+            
+    
+            var marker_36ee0da6be2c464f4a76c0a5d9a3a1b4 = L.marker(
+                [26.3, 56.3],
+                {
+}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var icon_441c539cdb0ab5833eb60a7a7a403b1d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8eed7f3b46fc167c53ca931a45302dae = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8cb3da14a6260f6bac2e84d14df08f1f = $(`<div id="html_8cb3da14a6260f6bac2e84d14df08f1f" style="width: 100.0%; height: 100.0%;"><b>Strait of Hormuz</b></div>`)[0];
+                popup_8eed7f3b46fc167c53ca931a45302dae.setContent(html_8cb3da14a6260f6bac2e84d14df08f1f);
+            
+        
+
+        marker_36ee0da6be2c464f4a76c0a5d9a3a1b4.bindPopup(popup_8eed7f3b46fc167c53ca931a45302dae)
+        ;
+
+        
+    
+    
+            marker_36ee0da6be2c464f4a76c0a5d9a3a1b4.bindTooltip(
+                `<div>
+                     Strait of Hormuz
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_36ee0da6be2c464f4a76c0a5d9a3a1b4.setIcon(icon_441c539cdb0ab5833eb60a7a7a403b1d);
+            
+    
+            var marker_b57844a9ac45bd5124e7e6a65b6baa65 = L.marker(
+                [26.95, 56.2667],
+                {
+}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var icon_62840d274b320180c0785a728bba6e8c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6fa9499e24a41c14d969a2cc305e3431 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9099e7dca79101a1bf4f0e20fd34c9cb = $(`<div id="html_9099e7dca79101a1bf4f0e20fd34c9cb" style="width: 100.0%; height: 100.0%;"><b>Qeshm Island</b></div>`)[0];
+                popup_6fa9499e24a41c14d969a2cc305e3431.setContent(html_9099e7dca79101a1bf4f0e20fd34c9cb);
+            
+        
+
+        marker_b57844a9ac45bd5124e7e6a65b6baa65.bindPopup(popup_6fa9499e24a41c14d969a2cc305e3431)
+        ;
+
+        
+    
+    
+            marker_b57844a9ac45bd5124e7e6a65b6baa65.bindTooltip(
+                `<div>
+                     Qeshm Island
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b57844a9ac45bd5124e7e6a65b6baa65.setIcon(icon_62840d274b320180c0785a728bba6e8c);
+            
+    
+            var marker_852d4e48bd6c1885c7b42a658fd3096b = L.marker(
+                [26.1833, 56.25],
+                {
+}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var icon_c026773b40aba71b82884bd5e1a75983 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4e7e1a286919bc6297f5c7f453f88234 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_439e77b18ea6b409c7ba0643f8491116 = $(`<div id="html_439e77b18ea6b409c7ba0643f8491116" style="width: 100.0%; height: 100.0%;"><b>Khasab Port</b></div>`)[0];
+                popup_4e7e1a286919bc6297f5c7f453f88234.setContent(html_439e77b18ea6b409c7ba0643f8491116);
+            
+        
+
+        marker_852d4e48bd6c1885c7b42a658fd3096b.bindPopup(popup_4e7e1a286919bc6297f5c7f453f88234)
+        ;
+
+        
+    
+    
+            marker_852d4e48bd6c1885c7b42a658fd3096b.bindTooltip(
+                `<div>
+                     Khasab Port
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_852d4e48bd6c1885c7b42a658fd3096b.setIcon(icon_c026773b40aba71b82884bd5e1a75983);
+            
+    
+            var marker_6cfc074d874389cf5ede5f71d6d3bf39 = L.marker(
+                [27.0667, 56.4667],
+                {
+}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var icon_c91e184ae6cf87708558c66b0e5faab0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_52f5180789b98ad81829e2aac62643ee = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0e5b3fc614a9d73e3fef29f1186f7c2a = $(`<div id="html_0e5b3fc614a9d73e3fef29f1186f7c2a" style="width: 100.0%; height: 100.0%;"><b>Hormuz Island</b></div>`)[0];
+                popup_52f5180789b98ad81829e2aac62643ee.setContent(html_0e5b3fc614a9d73e3fef29f1186f7c2a);
+            
+        
+
+        marker_6cfc074d874389cf5ede5f71d6d3bf39.bindPopup(popup_52f5180789b98ad81829e2aac62643ee)
+        ;
+
+        
+    
+    
+            marker_6cfc074d874389cf5ede5f71d6d3bf39.bindTooltip(
+                `<div>
+                     Hormuz Island
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6cfc074d874389cf5ede5f71d6d3bf39.setIcon(icon_c91e184ae6cf87708558c66b0e5faab0);
+            
+    
+            var circle_marker_c37c30b5dbdb3bdaea2019da70faddc1 = L.circleMarker(
+                [26.19885736614291, 56.41306106172511],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_5b32447672db8f9931fa3064616df033 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_a88c82a2d27e9b0f3d943e42212f6e7a = $(`<div id="html_a88c82a2d27e9b0f3d943e42212f6e7a" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>⛽ Vessel 240000000</h4>                 <b>Type:</b> Lpg Tanker<br>                 <b>Speed:</b> 12.9 knots<br>                 <b>Course:</b> 299°<br>                 <b>Heading:</b> 300°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 140m<br>                 <b>Draft:</b> 20.5m<br>                 <b>Flag:</b> IN<br>                 <b>Destination:</b> Bandar Abbas<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.1989°, 56.4131°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_5b32447672db8f9931fa3064616df033.setContent(html_a88c82a2d27e9b0f3d943e42212f6e7a);
+            
+        
+
+        circle_marker_c37c30b5dbdb3bdaea2019da70faddc1.bindPopup(popup_5b32447672db8f9931fa3064616df033)
+        ;
+
+        
+    
+    
+            circle_marker_c37c30b5dbdb3bdaea2019da70faddc1.bindTooltip(
+                `<div>
+                     ⛽ Lpg_Tanker - 12.9kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_7fd7ec64bb8e931f3a08e00495ca8473 = L.polyline(
+                [[26.19885736614291, 56.41306106172511], [26.20391410197462, 56.404433812874615]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var poly_line_ff855f3e455979b5a16bc5c8e9210aea = L.polyline(
+                [[26.19885736614291, 56.41306106172511], [26.188002047581673, 56.43158121735434], [26.17714672902044, 56.45010137298358], [26.166291410459202, 56.468621528612815], [26.15543609189797, 56.487141684242054], [26.14458077333673, 56.50566183987129], [26.133725454775497, 56.52418199550053], [26.12287013621426, 56.54270215112976], [26.112014817653023, 56.56122230675899], [26.10115949909179, 56.57974246238823]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_2ae4b6e20d70e66e11d22f1d8bee6525 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fc62ea63c0600c0e27646b82624067a7 = $(`<div id="html_fc62ea63c0600c0e27646b82624067a7" style="width: 100.0%; height: 100.0%;">Track for vessel 240000000</div>`)[0];
+                popup_2ae4b6e20d70e66e11d22f1d8bee6525.setContent(html_fc62ea63c0600c0e27646b82624067a7);
+            
+        
+
+        poly_line_ff855f3e455979b5a16bc5c8e9210aea.bindPopup(popup_2ae4b6e20d70e66e11d22f1d8bee6525)
+        ;
+
+        
+    
+    
+            var circle_marker_dc03d2bb8cacb6cb42035d892185e64f = L.circleMarker(
+                [26.227018012776476, 56.4398679325833],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_f541bba22c08cc1abff50b6fd39be3c5 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_e16178c9843f0d7deb52bf5d4b8412e0 = $(`<div id="html_e16178c9843f0d7deb52bf5d4b8412e0" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>🛢️ Vessel 240000001</h4>                 <b>Type:</b> Tanker<br>                 <b>Speed:</b> 11.1 knots<br>                 <b>Course:</b> 323°<br>                 <b>Heading:</b> 322°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 151m<br>                 <b>Draft:</b> 14.1m<br>                 <b>Flag:</b> PK<br>                 <b>Destination:</b> Dubai<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.2270°, 56.4399°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_f541bba22c08cc1abff50b6fd39be3c5.setContent(html_e16178c9843f0d7deb52bf5d4b8412e0);
+            
+        
+
+        circle_marker_dc03d2bb8cacb6cb42035d892185e64f.bindPopup(popup_f541bba22c08cc1abff50b6fd39be3c5)
+        ;
+
+        
+    
+    
+            circle_marker_dc03d2bb8cacb6cb42035d892185e64f.bindTooltip(
+                `<div>
+                     🛢️ Tanker - 11.1kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_41c62014ee69dd630e4e043e598dc607 = L.polyline(
+                [[26.227018012776476, 56.4398679325833], [26.234947156620798, 56.43377460197549]],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "darkred", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var poly_line_68c5280404b64d1bee42ebe6e4440124 = L.polyline(
+                [[26.227018012776476, 56.4398679325833], [26.212407662927543, 56.45109558763322], [26.19779731307861, 56.46232324268315], [26.183186963229677, 56.47355089773307], [26.168576613380743, 56.484778552783], [26.153966263531807, 56.49600620783292], [26.139355913682873, 56.50723386288285], [26.12474556383394, 56.51846151793277], [26.110135213985007, 56.52968917298269], [26.095524864136074, 56.54091682803262]],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "darkred", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_124958295e8475d96c2800da98de06d2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_dbd6c8878aad5dbee36738a51aeeccdc = $(`<div id="html_dbd6c8878aad5dbee36738a51aeeccdc" style="width: 100.0%; height: 100.0%;">Track for vessel 240000001</div>`)[0];
+                popup_124958295e8475d96c2800da98de06d2.setContent(html_dbd6c8878aad5dbee36738a51aeeccdc);
+            
+        
+
+        poly_line_68c5280404b64d1bee42ebe6e4440124.bindPopup(popup_124958295e8475d96c2800da98de06d2)
+        ;
+
+        
+    
+    
+            var circle_marker_facdb267b860707a6095393f30609ae8 = L.circleMarker(
+                [26.17782348513216, 56.42140950198959],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_495d11f8d599d89eb58d499b935cc723 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_88386171ea74bdf99d5e7cc0aa792f27 = $(`<div id="html_88386171ea74bdf99d5e7cc0aa792f27" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>🚤 Vessel 240000002</h4>                 <b>Type:</b> Patrol<br>                 <b>Speed:</b> 26.3 knots<br>                 <b>Course:</b> 329°<br>                 <b>Heading:</b> 325°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 136m<br>                 <b>Draft:</b> 13.9m<br>                 <b>Flag:</b> OM<br>                 <b>Destination:</b> Dubai<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.1778°, 56.4214°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_495d11f8d599d89eb58d499b935cc723.setContent(html_88386171ea74bdf99d5e7cc0aa792f27);
+            
+        
+
+        circle_marker_facdb267b860707a6095393f30609ae8.bindPopup(popup_495d11f8d599d89eb58d499b935cc723)
+        ;
+
+        
+    
+    
+            circle_marker_facdb267b860707a6095393f30609ae8.bindTooltip(
+                `<div>
+                     🚤 Patrol - 26.3kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_160cbf97b34d0b82f02684edf5b2f84a = L.polyline(
+                [[26.17782348513216, 56.42140950198959], [26.185987528346892, 56.41563469477307]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var poly_line_c85a690959221f2769882345a1a7345b = L.polyline(
+                [[26.17782348513216, 56.42140950198959], [26.14199238059536, 56.4467545075968], [26.106161276058565, 56.47209951320401], [26.070330171521768, 56.49744451881122], [26.034499066984974, 56.52278952441843], [25.998667962448177, 56.54813453002564], [25.96283685791138, 56.57347953563285], [25.927005753374583, 56.59882454124006], [25.891174648837787, 56.62416954684727], [25.855343544300993, 56.649514552454484]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_e54f8b4733b8f0fc348f8b5f045ccb8c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f38ff7e29895654b93016d58c5def0d4 = $(`<div id="html_f38ff7e29895654b93016d58c5def0d4" style="width: 100.0%; height: 100.0%;">Track for vessel 240000002</div>`)[0];
+                popup_e54f8b4733b8f0fc348f8b5f045ccb8c.setContent(html_f38ff7e29895654b93016d58c5def0d4);
+            
+        
+
+        poly_line_c85a690959221f2769882345a1a7345b.bindPopup(popup_e54f8b4733b8f0fc348f8b5f045ccb8c)
+        ;
+
+        
+    
+    
+            var circle_marker_6dc435735200f8657a87c84d7668be07 = L.circleMarker(
+                [26.218492384676633, 56.41392675513246],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_be6cc4277135b9189a508c348a849eaa = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_e48bfb649725b1cdd30b61a72d4012c9 = $(`<div id="html_e48bfb649725b1cdd30b61a72d4012c9" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>🚢 Vessel 240000003</h4>                 <b>Type:</b> Container<br>                 <b>Speed:</b> 19.7 knots<br>                 <b>Course:</b> 307°<br>                 <b>Heading:</b> 305°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 159m<br>                 <b>Draft:</b> 15.4m<br>                 <b>Flag:</b> PK<br>                 <b>Destination:</b> Bandar Abbas<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.2185°, 56.4139°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_be6cc4277135b9189a508c348a849eaa.setContent(html_e48bfb649725b1cdd30b61a72d4012c9);
+            
+        
+
+        circle_marker_6dc435735200f8657a87c84d7668be07.bindPopup(popup_be6cc4277135b9189a508c348a849eaa)
+        ;
+
+        
+    
+    
+            circle_marker_6dc435735200f8657a87c84d7668be07.bindTooltip(
+                `<div>
+                     🚢 Container - 19.7kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_66630096ed4879835522b8b168635e6b = L.polyline(
+                [[26.218492384676633, 56.41392675513246], [26.224202564592016, 56.40571737967912]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var poly_line_c6763ef25728ce96d581990327dbea6b = L.polyline(
+                [[26.218492384676633, 56.41392675513246], [26.199719463019232, 56.44091609076208], [26.18094654136183, 56.4679054263917], [26.16217361970443, 56.49489476202132], [26.143400698047028, 56.52188409765094], [26.124627776389627, 56.54887343328056], [26.105854854732225, 56.575862768910184], [26.087081933074824, 56.60285210453981], [26.06830901141742, 56.62984144016942], [26.049536089760018, 56.656830775799044]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_93eb811420f0bf73833caf6b6a2f20da = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a7dcc21806bf6a59779c818990360e97 = $(`<div id="html_a7dcc21806bf6a59779c818990360e97" style="width: 100.0%; height: 100.0%;">Track for vessel 240000003</div>`)[0];
+                popup_93eb811420f0bf73833caf6b6a2f20da.setContent(html_a7dcc21806bf6a59779c818990360e97);
+            
+        
+
+        poly_line_c6763ef25728ce96d581990327dbea6b.bindPopup(popup_93eb811420f0bf73833caf6b6a2f20da)
+        ;
+
+        
+    
+    
+            var circle_marker_dbcc7b8a67e18d8215738603ce6ef4d3 = L.circleMarker(
+                [26.233828540039855, 56.37474489269236],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_1a126533940d1f9d9d24ab8f328d1577 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_2ffd8dc74e5a028b7ef7e100f61330f6 = $(`<div id="html_2ffd8dc74e5a028b7ef7e100f61330f6" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>⛽ Vessel 240000004</h4>                 <b>Type:</b> Lpg Tanker<br>                 <b>Speed:</b> 15.0 knots<br>                 <b>Course:</b> 312°<br>                 <b>Heading:</b> 317°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 236m<br>                 <b>Draft:</b> 16.4m<br>                 <b>Flag:</b> JP<br>                 <b>Destination:</b> Kuwait<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.2338°, 56.3747°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_1a126533940d1f9d9d24ab8f328d1577.setContent(html_2ffd8dc74e5a028b7ef7e100f61330f6);
+            
+        
+
+        circle_marker_dbcc7b8a67e18d8215738603ce6ef4d3.bindPopup(popup_1a126533940d1f9d9d24ab8f328d1577)
+        ;
+
+        
+    
+    
+            circle_marker_dbcc7b8a67e18d8215738603ce6ef4d3.bindTooltip(
+                `<div>
+                     ⛽ Lpg_Tanker - 15.0kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_40a71f9d75bbe25136fb49c98ef85902 = L.polyline(
+                [[26.233828540039855, 56.37474489269236], [26.241160123668898, 56.3679443131957]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var poly_line_0417d4c9cb22dc3ea799263032528fdb = L.polyline(
+                [[26.233828540039855, 56.37474489269236], [26.21555653552448, 56.391693511920806], [26.197284531009103, 56.40864213114926], [26.17901252649373, 56.4255907503777], [26.160740521978354, 56.442539369606145], [26.14246851746298, 56.459487988834596], [26.124196512947602, 56.47643660806304], [26.105924508432228, 56.49338522729148], [26.087652503916853, 56.510333846519934], [26.06938049940148, 56.52728246574838]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_978764070e8c9a030ae27b290da44b8e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3484ba6d8b173430eb4fa054d7ee4b20 = $(`<div id="html_3484ba6d8b173430eb4fa054d7ee4b20" style="width: 100.0%; height: 100.0%;">Track for vessel 240000004</div>`)[0];
+                popup_978764070e8c9a030ae27b290da44b8e.setContent(html_3484ba6d8b173430eb4fa054d7ee4b20);
+            
+        
+
+        poly_line_0417d4c9cb22dc3ea799263032528fdb.bindPopup(popup_978764070e8c9a030ae27b290da44b8e)
+        ;
+
+        
+    
+    
+            var circle_marker_9a5925c460d36e9e828a30cba58bbe9a = L.circleMarker(
+                [26.206966772680495, 56.36786658213107],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_b4c19364326d04380bc75fa97f1eecf4 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_c101ad4b69cd9add349c9a4ef843059c = $(`<div id="html_c101ad4b69cd9add349c9a4ef843059c" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>🚢 Vessel 240000005</h4>                 <b>Type:</b> Container<br>                 <b>Speed:</b> 20.5 knots<br>                 <b>Course:</b> 303°<br>                 <b>Heading:</b> 303°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 250m<br>                 <b>Draft:</b> 15.1m<br>                 <b>Flag:</b> IN<br>                 <b>Destination:</b> Dubai<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.2070°, 56.3679°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_b4c19364326d04380bc75fa97f1eecf4.setContent(html_c101ad4b69cd9add349c9a4ef843059c);
+            
+        
+
+        circle_marker_9a5925c460d36e9e828a30cba58bbe9a.bindPopup(popup_b4c19364326d04380bc75fa97f1eecf4)
+        ;
+
+        
+    
+    
+            circle_marker_9a5925c460d36e9e828a30cba58bbe9a.bindTooltip(
+                `<div>
+                     🚢 Container - 20.5kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_b28c8c7be32df4a304c8844789354b42 = L.polyline(
+                [[26.206966772680495, 56.36786658213107], [26.21234404355481, 56.3594353925386]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var poly_line_799f32079ef879fe3ead9271a665ce4a = L.polyline(
+                [[26.206966772680495, 56.36786658213107], [26.188550352348997, 56.3967422581122], [26.170133932017496, 56.42561793409333], [26.151717511685998, 56.45449361007446], [26.133301091354497, 56.483369286055584], [26.114884671023, 56.51224496203671], [26.096468250691498, 56.541120638017844], [26.07805183036, 56.56999631399897], [26.059635410028502, 56.5988719899801], [26.041218989697, 56.62774766596122]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_faaba737a260973d2fa39821d7573156 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7a09e8ef6b8e507dcfa465a87f84dc53 = $(`<div id="html_7a09e8ef6b8e507dcfa465a87f84dc53" style="width: 100.0%; height: 100.0%;">Track for vessel 240000005</div>`)[0];
+                popup_faaba737a260973d2fa39821d7573156.setContent(html_7a09e8ef6b8e507dcfa465a87f84dc53);
+            
+        
+
+        poly_line_799f32079ef879fe3ead9271a665ce4a.bindPopup(popup_faaba737a260973d2fa39821d7573156)
+        ;
+
+        
+    
+    
+            var circle_marker_dfdd131722aaf2a67e8c3495c8a90a91 = L.circleMarker(
+                [26.15032012344876, 56.401404141537284],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_3a32ac2ba8441fdc6fe7f32a9e63486d = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_09a3b8c4baf46f182c21580cfaf35fcd = $(`<div id="html_09a3b8c4baf46f182c21580cfaf35fcd" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>🚤 Vessel 240000006</h4>                 <b>Type:</b> Patrol<br>                 <b>Speed:</b> 36.1 knots<br>                 <b>Course:</b> 319°<br>                 <b>Heading:</b> 323°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 275m<br>                 <b>Draft:</b> 19.6m<br>                 <b>Flag:</b> SA<br>                 <b>Destination:</b> Dammam<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.1503°, 56.4014°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_3a32ac2ba8441fdc6fe7f32a9e63486d.setContent(html_09a3b8c4baf46f182c21580cfaf35fcd);
+            
+        
+
+        circle_marker_dfdd131722aaf2a67e8c3495c8a90a91.bindPopup(popup_3a32ac2ba8441fdc6fe7f32a9e63486d)
+        ;
+
+        
+    
+    
+            circle_marker_dfdd131722aaf2a67e8c3495c8a90a91.bindTooltip(
+                `<div>
+                     🚤 Patrol - 36.1kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_bea1bd82d54a2192b476a688bc6a4b3c = L.polyline(
+                [[26.15032012344876, 56.401404141537284], [26.158287393267038, 56.39536074748735]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var poly_line_33e519f77613dcfaa7ffb3e645efe36b = L.polyline(
+                [[26.15032012344876, 56.401404141537284], [26.102359483590313, 56.43778361056023], [26.054398843731864, 56.47416307958318], [26.006438203873415, 56.51054254860612], [25.958477564014967, 56.546922017629065], [25.910516924156518, 56.58330148665201], [25.86255628429807, 56.61968095567496], [25.81459564443962, 56.6560604246979], [25.766635004581172, 56.692439893720845], [25.718674364722723, 56.72881936274379]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_9a69833ddcf0ecbf834f086004d608ad = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5b2412acd16f3eb4a92ff2a31d5f333b = $(`<div id="html_5b2412acd16f3eb4a92ff2a31d5f333b" style="width: 100.0%; height: 100.0%;">Track for vessel 240000006</div>`)[0];
+                popup_9a69833ddcf0ecbf834f086004d608ad.setContent(html_5b2412acd16f3eb4a92ff2a31d5f333b);
+            
+        
+
+        poly_line_33e519f77613dcfaa7ffb3e645efe36b.bindPopup(popup_9a69833ddcf0ecbf834f086004d608ad)
+        ;
+
+        
+    
+    
+            var circle_marker_e1ae5e8e668d7c54c72b48b4c5f4b046 = L.circleMarker(
+                [26.183324749257736, 56.357211443303974],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_d15302480ce7a9af1d1dcfccf310e3d2 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_57b19e153ef9e8a04d2370da0ad9841c = $(`<div id="html_57b19e153ef9e8a04d2370da0ad9841c" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>🚢 Vessel 240000007</h4>                 <b>Type:</b> Container<br>                 <b>Speed:</b> 18.2 knots<br>                 <b>Course:</b> 309°<br>                 <b>Heading:</b> 306°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 272m<br>                 <b>Draft:</b> 10.1m<br>                 <b>Flag:</b> JP<br>                 <b>Destination:</b> Transit<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.1833°, 56.3572°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_d15302480ce7a9af1d1dcfccf310e3d2.setContent(html_57b19e153ef9e8a04d2370da0ad9841c);
+            
+        
+
+        circle_marker_e1ae5e8e668d7c54c72b48b4c5f4b046.bindPopup(popup_d15302480ce7a9af1d1dcfccf310e3d2)
+        ;
+
+        
+    
+    
+            circle_marker_e1ae5e8e668d7c54c72b48b4c5f4b046.bindTooltip(
+                `<div>
+                     🚢 Container - 18.2kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_ccf1f1eba7feecf56c00d255a6db5328 = L.polyline(
+                [[26.183324749257736, 56.357211443303974], [26.189132351704114, 56.34907069678877]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var poly_line_58631c740628f43d6e9a79620d857721 = L.polyline(
+                [[26.183324749257736, 56.357211443303974], [26.165743634927484, 56.38185558803305], [26.148162520597232, 56.406499732762114], [26.130581406266977, 56.43114387749119], [26.113000291936725, 56.455788022220254], [26.095419177606473, 56.48043216694933], [26.07783806327622, 56.505076311678394], [26.06025694894597, 56.52972045640747], [26.042675834615718, 56.55436460113654], [26.025094720285463, 56.57900874586561]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_4fceefa4cbbed63a01344b0b07d02462 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_224e965d8164b0cc54e490d561fab35f = $(`<div id="html_224e965d8164b0cc54e490d561fab35f" style="width: 100.0%; height: 100.0%;">Track for vessel 240000007</div>`)[0];
+                popup_4fceefa4cbbed63a01344b0b07d02462.setContent(html_224e965d8164b0cc54e490d561fab35f);
+            
+        
+
+        poly_line_58631c740628f43d6e9a79620d857721.bindPopup(popup_4fceefa4cbbed63a01344b0b07d02462)
+        ;
+
+        
+    
+    
+            var circle_marker_aa17229b1e8e073ca0fed33f45fa8848 = L.circleMarker(
+                [26.23215438592859, 56.367562575364744],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_6d776f43389c968ce041101b2a009018 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_71a43c60a1fdf3e14ef804f0b4a75fe2 = $(`<div id="html_71a43c60a1fdf3e14ef804f0b4a75fe2" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>🚤 Vessel 240000008</h4>                 <b>Type:</b> Patrol<br>                 <b>Speed:</b> 25.0 knots<br>                 <b>Course:</b> 308°<br>                 <b>Heading:</b> 304°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 264m<br>                 <b>Draft:</b> 11.1m<br>                 <b>Flag:</b> IN<br>                 <b>Destination:</b> Bandar Abbas<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.2322°, 56.3676°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_6d776f43389c968ce041101b2a009018.setContent(html_71a43c60a1fdf3e14ef804f0b4a75fe2);
+            
+        
+
+        circle_marker_aa17229b1e8e073ca0fed33f45fa8848.bindPopup(popup_6d776f43389c968ce041101b2a009018)
+        ;
+
+        
+    
+    
+            circle_marker_aa17229b1e8e073ca0fed33f45fa8848.bindTooltip(
+                `<div>
+                     🚤 Patrol - 25.0kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_343bf3b91894d55f156131356c164926 = L.polyline(
+                [[26.23215438592859, 56.367562575364744], [26.23768767416684, 56.359232946245]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var poly_line_8e2aec4f84e6b4d45a13ec4f6904a2be = L.polyline(
+                [[26.23215438592859, 56.367562575364744], [26.209061371047937, 56.40232603624555], [26.185968356167283, 56.437089497126344], [26.16287534128663, 56.47185295800715], [26.139782326405975, 56.506616418887944], [26.11668931152532, 56.54137987976875], [26.093596296644666, 56.576143340649544], [26.07050328176401, 56.61090680153035], [26.047410266883357, 56.645670262411144], [26.0243172520027, 56.68043372329195]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_6bd8361663425c2b5aed1b37d8e8a065 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0c75e1283c475b4d6d20c753a40bea3b = $(`<div id="html_0c75e1283c475b4d6d20c753a40bea3b" style="width: 100.0%; height: 100.0%;">Track for vessel 240000008</div>`)[0];
+                popup_6bd8361663425c2b5aed1b37d8e8a065.setContent(html_0c75e1283c475b4d6d20c753a40bea3b);
+            
+        
+
+        poly_line_8e2aec4f84e6b4d45a13ec4f6904a2be.bindPopup(popup_6bd8361663425c2b5aed1b37d8e8a065)
+        ;
+
+        
+    
+    
+            var circle_marker_8725eb82e3aa227808a3fd3cdd73ba1c = L.circleMarker(
+                [26.18963389604869, 56.41758745642948],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_b3593890001137691d5ac38386c05c5a = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_ce068e9b1a3695aa4e098bd0c3375793 = $(`<div id="html_ce068e9b1a3695aa4e098bd0c3375793" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>🚢 Vessel 240000009</h4>                 <b>Type:</b> Container<br>                 <b>Speed:</b> 17.9 knots<br>                 <b>Course:</b> 327°<br>                 <b>Heading:</b> 331°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 128m<br>                 <b>Draft:</b> 10.5m<br>                 <b>Flag:</b> IR<br>                 <b>Destination:</b> Dammam<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.1896°, 56.4176°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_b3593890001137691d5ac38386c05c5a.setContent(html_ce068e9b1a3695aa4e098bd0c3375793);
+            
+        
+
+        circle_marker_8725eb82e3aa227808a3fd3cdd73ba1c.bindPopup(popup_b3593890001137691d5ac38386c05c5a)
+        ;
+
+        
+    
+    
+            circle_marker_8725eb82e3aa227808a3fd3cdd73ba1c.bindTooltip(
+                `<div>
+                     🚢 Container - 17.9kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_51b1805303e0314dc947b85a8138a328 = L.polyline(
+                [[26.18963389604869, 56.41758745642948], [26.19841453612662, 56.412802024388185]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var poly_line_be9addd6cacf61ebb2bafdbf78c9ad93 = L.polyline(
+                [[26.18963389604869, 56.41758745642948], [26.163442471203023, 56.43186173285479], [26.137251046357356, 56.4461360092801], [26.11105962151169, 56.460410285705414], [26.084868196666022, 56.47468456213072], [26.058676771820355, 56.48895883855603], [26.03248534697469, 56.50323311498134], [26.006293922129018, 56.51750739140665], [25.98010249728335, 56.531781667831964], [25.953911072437684, 56.546055944257276]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_c174a929f066404a8b43932e48a32d76 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_39a6398029e003983aa91128d980690f = $(`<div id="html_39a6398029e003983aa91128d980690f" style="width: 100.0%; height: 100.0%;">Track for vessel 240000009</div>`)[0];
+                popup_c174a929f066404a8b43932e48a32d76.setContent(html_39a6398029e003983aa91128d980690f);
+            
+        
+
+        poly_line_be9addd6cacf61ebb2bafdbf78c9ad93.bindPopup(popup_c174a929f066404a8b43932e48a32d76)
+        ;
+
+        
+    
+    
+            var circle_marker_9bef7039f96f2787e7f54d5ed96245b5 = L.circleMarker(
+                [26.195430162231695, 56.44343486987289],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_d80901040895ec0d355131104e98b96c = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_1bd65dab1e06f10cef6e934d7a65b475 = $(`<div id="html_1bd65dab1e06f10cef6e934d7a65b475" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>🚢 Vessel 240000010</h4>                 <b>Type:</b> Container<br>                 <b>Speed:</b> 20.5 knots<br>                 <b>Course:</b> 308°<br>                 <b>Heading:</b> 304°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 303m<br>                 <b>Draft:</b> 18.0m<br>                 <b>Flag:</b> QA<br>                 <b>Destination:</b> Basra<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.1954°, 56.4434°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_d80901040895ec0d355131104e98b96c.setContent(html_1bd65dab1e06f10cef6e934d7a65b475);
+            
+        
+
+        circle_marker_9bef7039f96f2787e7f54d5ed96245b5.bindPopup(popup_d80901040895ec0d355131104e98b96c)
+        ;
+
+        
+    
+    
+            circle_marker_9bef7039f96f2787e7f54d5ed96245b5.bindTooltip(
+                `<div>
+                     🚢 Container - 20.5kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_a4f34c1e510d4da287700245e3efbbb7 = L.polyline(
+                [[26.195430162231695, 56.44343486987289], [26.201086519162004, 56.43518831748556]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_04aa2e231adaae62fabfcb511209fdf8 = L.circleMarker(
+                [26.222633303961107, 56.3881293291364],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_10e838cf59093681d0a4a649e9abb079 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_238b37622f49c3fe68270bad946669d3 = $(`<div id="html_238b37622f49c3fe68270bad946669d3" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>📦 Vessel 240000011</h4>                 <b>Type:</b> Cargo<br>                 <b>Speed:</b> 12.4 knots<br>                 <b>Course:</b> 311°<br>                 <b>Heading:</b> 310°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 253m<br>                 <b>Draft:</b> 11.9m<br>                 <b>Flag:</b> IR<br>                 <b>Destination:</b> Dubai<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.2226°, 56.3881°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_10e838cf59093681d0a4a649e9abb079.setContent(html_238b37622f49c3fe68270bad946669d3);
+            
+        
+
+        circle_marker_04aa2e231adaae62fabfcb511209fdf8.bindPopup(popup_10e838cf59093681d0a4a649e9abb079)
+        ;
+
+        
+    
+    
+            circle_marker_04aa2e231adaae62fabfcb511209fdf8.bindTooltip(
+                `<div>
+                     📦 Cargo - 12.4kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_17dbf3b2e1c2ca5d18877ab7c81e70b4 = L.polyline(
+                [[26.222633303961107, 56.3881293291364], [26.2290402168001, 56.38045134321081]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_8f271ee7867938435dc0381dafe44b03 = L.circleMarker(
+                [26.217243999725138, 56.37619607879394],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_7848ac0c13c1e9afe8f34f6e6247f575 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_7691d34a0b98f6a88e609f08266c4c7a = $(`<div id="html_7691d34a0b98f6a88e609f08266c4c7a" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>🛢️ Vessel 240000012</h4>                 <b>Type:</b> Tanker<br>                 <b>Speed:</b> 10.6 knots<br>                 <b>Course:</b> 306°<br>                 <b>Heading:</b> 309°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 167m<br>                 <b>Draft:</b> 21.4m<br>                 <b>Flag:</b> OM<br>                 <b>Destination:</b> Bandar Abbas<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.2172°, 56.3762°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_7848ac0c13c1e9afe8f34f6e6247f575.setContent(html_7691d34a0b98f6a88e609f08266c4c7a);
+            
+        
+
+        circle_marker_8f271ee7867938435dc0381dafe44b03.bindPopup(popup_7848ac0c13c1e9afe8f34f6e6247f575)
+        ;
+
+        
+    
+    
+            circle_marker_8f271ee7867938435dc0381dafe44b03.bindTooltip(
+                `<div>
+                     🛢️ Tanker - 10.6kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_953ccf9a2d046716391af4e27578f5f6 = L.polyline(
+                [[26.217243999725138, 56.37619607879394], [26.22355171122216, 56.36843638964615]],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "darkred", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_1877bd0ccd772d72276ee021fa694aca = L.circleMarker(
+                [26.190314923445936, 56.37986549468984],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_d3a00cbd91251e6e385bd3ce694ef09c = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_0963994e493037a22578544b31c49b0f = $(`<div id="html_0963994e493037a22578544b31c49b0f" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>🛢️ Vessel 240000013</h4>                 <b>Type:</b> Tanker<br>                 <b>Speed:</b> 13.2 knots<br>                 <b>Course:</b> 303°<br>                 <b>Heading:</b> 304°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 380m<br>                 <b>Draft:</b> 11.8m<br>                 <b>Flag:</b> SA<br>                 <b>Destination:</b> Transit<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.1903°, 56.3799°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_d3a00cbd91251e6e385bd3ce694ef09c.setContent(html_0963994e493037a22578544b31c49b0f);
+            
+        
+
+        circle_marker_1877bd0ccd772d72276ee021fa694aca.bindPopup(popup_d3a00cbd91251e6e385bd3ce694ef09c)
+        ;
+
+        
+    
+    
+            circle_marker_1877bd0ccd772d72276ee021fa694aca.bindTooltip(
+                `<div>
+                     🛢️ Tanker - 13.2kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_650e2135a0f3e138216f566d2642131e = L.polyline(
+                [[26.190314923445936, 56.37986549468984], [26.195930507782595, 56.37159112386434]],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "darkred", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_f9b75557954605f21fcafce28bcebc18 = L.circleMarker(
+                [26.223553965556754, 56.385879541642595],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_4deb7b74b21b6a169e0e85ff67058dfc = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_c268ce06551d1c4e16d3a0a170220ce2 = $(`<div id="html_c268ce06551d1c4e16d3a0a170220ce2" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>🛢️ Vessel 240000014</h4>                 <b>Type:</b> Tanker<br>                 <b>Speed:</b> 13.9 knots<br>                 <b>Course:</b> 309°<br>                 <b>Heading:</b> 306°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 302m<br>                 <b>Draft:</b> 16.5m<br>                 <b>Flag:</b> IN<br>                 <b>Destination:</b> Kuwait<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.2236°, 56.3859°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_4deb7b74b21b6a169e0e85ff67058dfc.setContent(html_c268ce06551d1c4e16d3a0a170220ce2);
+            
+        
+
+        circle_marker_f9b75557954605f21fcafce28bcebc18.bindPopup(popup_4deb7b74b21b6a169e0e85ff67058dfc)
+        ;
+
+        
+    
+    
+            circle_marker_f9b75557954605f21fcafce28bcebc18.bindTooltip(
+                `<div>
+                     🛢️ Tanker - 13.9kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_9ee81002650ceeb21abde4a2d2722090 = L.polyline(
+                [[26.223553965556754, 56.385879541642595], [26.229443975449794, 56.37779821851702]],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "darkred", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_af1a8551081632bc584318e412f69e5f = L.circleMarker(
+                [26.386066150097182, 56.22266984493615],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_d03e73ef01c6607e4ed46cf829fa9933 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_019b6ec4e6a86cf3127fd60482e2f115 = $(`<div id="html_019b6ec4e6a86cf3127fd60482e2f115" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>🛢️ Vessel 240000015</h4>                 <b>Type:</b> Tanker<br>                 <b>Speed:</b> 8.7 knots<br>                 <b>Course:</b> 118°<br>                 <b>Heading:</b> 117°<br>                 <b>Status:</b> Constrained by Draft<br>                 <b>Length:</b> 153m<br>                 <b>Draft:</b> 8.2m<br>                 <b>Flag:</b> JP<br>                 <b>Destination:</b> Dammam<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.3861°, 56.2227°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_d03e73ef01c6607e4ed46cf829fa9933.setContent(html_019b6ec4e6a86cf3127fd60482e2f115);
+            
+        
+
+        circle_marker_af1a8551081632bc584318e412f69e5f.bindPopup(popup_d03e73ef01c6607e4ed46cf829fa9933)
+        ;
+
+        
+    
+    
+            circle_marker_af1a8551081632bc584318e412f69e5f.bindTooltip(
+                `<div>
+                     🛢️ Tanker - 8.7kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_1079d4d96f3914fc98dae3ab4b66f1a1 = L.polyline(
+                [[26.386066150097182, 56.22266984493615], [26.38152109044844, 56.23157728187331]],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "darkred", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_88451d16e5909553c7028b0c26811f16 = L.circleMarker(
+                [26.39464999996966, 56.150144450338246],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_588c4a68f622d9a1c0b153f26d5cf070 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_c81537e0b15f3b78f8ab772c4440c3c8 = $(`<div id="html_c81537e0b15f3b78f8ab772c4440c3c8" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>📦 Vessel 240000016</h4>                 <b>Type:</b> Cargo<br>                 <b>Speed:</b> 12.2 knots<br>                 <b>Course:</b> 145°<br>                 <b>Heading:</b> 141°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 298m<br>                 <b>Draft:</b> 16.7m<br>                 <b>Flag:</b> QA<br>                 <b>Destination:</b> Transit<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.3946°, 56.1501°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_588c4a68f622d9a1c0b153f26d5cf070.setContent(html_c81537e0b15f3b78f8ab772c4440c3c8);
+            
+        
+
+        circle_marker_88451d16e5909553c7028b0c26811f16.bindPopup(popup_588c4a68f622d9a1c0b153f26d5cf070)
+        ;
+
+        
+    
+    
+            circle_marker_88451d16e5909553c7028b0c26811f16.bindTooltip(
+                `<div>
+                     📦 Cargo - 12.2kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_42eb85b1658714eacfe4cac28398bb1b = L.polyline(
+                [[26.39464999996966, 56.150144450338246], [26.386917159143902, 56.15648504753122]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_04d3f9fa5f08a8faaaa884e7e457ee59 = L.circleMarker(
+                [26.374191874355013, 56.18963911110752],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "brown", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_f28253a01bcf933b62eb7def9e3856bb = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_203deebac458fa17f46972198f41e8e6 = $(`<div id="html_203deebac458fa17f46972198f41e8e6" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>⚫ Vessel 240000017</h4>                 <b>Type:</b> Bulk Carrier<br>                 <b>Speed:</b> 12.5 knots<br>                 <b>Course:</b> 134°<br>                 <b>Heading:</b> 135°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 192m<br>                 <b>Draft:</b> 9.9m<br>                 <b>Flag:</b> PK<br>                 <b>Destination:</b> Dammam<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.3742°, 56.1896°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_f28253a01bcf933b62eb7def9e3856bb.setContent(html_203deebac458fa17f46972198f41e8e6);
+            
+        
+
+        circle_marker_04d3f9fa5f08a8faaaa884e7e457ee59.bindPopup(popup_f28253a01bcf933b62eb7def9e3856bb)
+        ;
+
+        
+    
+    
+            circle_marker_04d3f9fa5f08a8faaaa884e7e457ee59.bindTooltip(
+                `<div>
+                     ⚫ Bulk_Carrier - 12.5kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_63f0709d3ac7e4c5db96a98fad7ad320 = L.polyline(
+                [[26.374191874355013, 56.18963911110752], [26.367098705507555, 56.19668800858879]],
+                {"bubblingMouseEvents": true, "color": "brown", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "brown", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_4b7c22972421bce268fa88e769027d35 = L.circleMarker(
+                [26.437217643284207, 56.201764480319405],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_888a3915277a163922c33712656de47d = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_90aa08d507417a2464900aec71beeddd = $(`<div id="html_90aa08d507417a2464900aec71beeddd" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>⛽ Vessel 240000018</h4>                 <b>Type:</b> Lpg Tanker<br>                 <b>Speed:</b> 13.9 knots<br>                 <b>Course:</b> 141°<br>                 <b>Heading:</b> 144°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 305m<br>                 <b>Draft:</b> 20.1m<br>                 <b>Flag:</b> KR<br>                 <b>Destination:</b> Kuwait<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.4372°, 56.2018°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_888a3915277a163922c33712656de47d.setContent(html_90aa08d507417a2464900aec71beeddd);
+            
+        
+
+        circle_marker_4b7c22972421bce268fa88e769027d35.bindPopup(popup_888a3915277a163922c33712656de47d)
+        ;
+
+        
+    
+    
+            circle_marker_4b7c22972421bce268fa88e769027d35.bindTooltip(
+                `<div>
+                     ⛽ Lpg_Tanker - 13.9kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_64f70c2fbabdc09c720af8bbc10b5b65 = L.polyline(
+                [[26.437217643284207, 56.201764480319405], [26.42913831502039, 56.207657226267216]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_2f542a1c86e511060e7a943a901ff361 = L.circleMarker(
+                [26.406322932174643, 56.24149679574848],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_38b1a3d4627d4a40d2bd5a6853aa6aba = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_2e1a314b2ea52e15dc42a27487eebc14 = $(`<div id="html_2e1a314b2ea52e15dc42a27487eebc14" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>📦 Vessel 240000019</h4>                 <b>Type:</b> Cargo<br>                 <b>Speed:</b> 16.4 knots<br>                 <b>Course:</b> 125°<br>                 <b>Heading:</b> 129°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 175m<br>                 <b>Draft:</b> 17.3m<br>                 <b>Flag:</b> AE<br>                 <b>Destination:</b> Dammam<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.4063°, 56.2415°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_38b1a3d4627d4a40d2bd5a6853aa6aba.setContent(html_2e1a314b2ea52e15dc42a27487eebc14);
+            
+        
+
+        circle_marker_2f542a1c86e511060e7a943a901ff361.bindPopup(popup_38b1a3d4627d4a40d2bd5a6853aa6aba)
+        ;
+
+        
+    
+    
+            circle_marker_2f542a1c86e511060e7a943a901ff361.bindTooltip(
+                `<div>
+                     📦 Cargo - 16.4kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_1840c0e7814c288775ebbc320ef729cf = L.polyline(
+                [[26.406322932174643, 56.24149679574848], [26.40000613117411, 56.24924908735289]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_31ea081561f58738eaad9e668d0cf80e = L.circleMarker(
+                [26.38718890271651, 56.1592888346339],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_bd816c79a24074df667f683c379e1276 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_885bea7616535748b46f5acb1def706c = $(`<div id="html_885bea7616535748b46f5acb1def706c" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>📦 Vessel 240000020</h4>                 <b>Type:</b> Cargo<br>                 <b>Speed:</b> 17.8 knots<br>                 <b>Course:</b> 147°<br>                 <b>Heading:</b> 152°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 312m<br>                 <b>Draft:</b> 8.5m<br>                 <b>Flag:</b> JP<br>                 <b>Destination:</b> Bandar Abbas<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.3872°, 56.1593°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_bd816c79a24074df667f683c379e1276.setContent(html_885bea7616535748b46f5acb1def706c);
+            
+        
+
+        circle_marker_31ea081561f58738eaad9e668d0cf80e.bindPopup(popup_bd816c79a24074df667f683c379e1276)
+        ;
+
+        
+    
+    
+            circle_marker_31ea081561f58738eaad9e668d0cf80e.bindTooltip(
+                `<div>
+                     📦 Cargo - 17.8kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_b5ebacfbfff506a01891b6a73733691b = L.polyline(
+                [[26.38718890271651, 56.1592888346339], [26.378338785308244, 56.163944521678786]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_6b8a6d634f2e0a1250e11d697693e004 = L.circleMarker(
+                [26.39045567543731, 56.23293070145232],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_ba6073fe927d63e2cdef1f9246ddd685 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_0a6b9caab9fb9518ad85fd24f4e02989 = $(`<div id="html_0a6b9caab9fb9518ad85fd24f4e02989" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>🛢️ Vessel 240000021</h4>                 <b>Type:</b> Tanker<br>                 <b>Speed:</b> 13.7 knots<br>                 <b>Course:</b> 123°<br>                 <b>Heading:</b> 120°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 193m<br>                 <b>Draft:</b> 21.9m<br>                 <b>Flag:</b> KW<br>                 <b>Destination:</b> Dubai<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.3905°, 56.2329°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_ba6073fe927d63e2cdef1f9246ddd685.setContent(html_0a6b9caab9fb9518ad85fd24f4e02989);
+            
+        
+
+        circle_marker_6b8a6d634f2e0a1250e11d697693e004.bindPopup(popup_ba6073fe927d63e2cdef1f9246ddd685)
+        ;
+
+        
+    
+    
+            circle_marker_6b8a6d634f2e0a1250e11d697693e004.bindTooltip(
+                `<div>
+                     🛢️ Tanker - 13.7kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_d1a54c0da47a25ea770e5fe8b84f9e2e = L.polyline(
+                [[26.39045567543731, 56.23293070145232], [26.38538450571364, 56.24154947384946]],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "darkred", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_be60564a0872c734ced367daad36e000 = L.circleMarker(
+                [26.406199586757616, 56.20199596636886],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_70bde9b48025170bb9724bacec3ffbfd = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_e83f9e84d7bc855791c908feeea93d56 = $(`<div id="html_e83f9e84d7bc855791c908feeea93d56" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>🛢️ Vessel 240000022</h4>                 <b>Type:</b> Tanker<br>                 <b>Speed:</b> 14.7 knots<br>                 <b>Course:</b> 135°<br>                 <b>Heading:</b> 135°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 111m<br>                 <b>Draft:</b> 21.8m<br>                 <b>Flag:</b> KW<br>                 <b>Destination:</b> Dammam<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.4062°, 56.2020°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_70bde9b48025170bb9724bacec3ffbfd.setContent(html_e83f9e84d7bc855791c908feeea93d56);
+            
+        
+
+        circle_marker_be60564a0872c734ced367daad36e000.bindPopup(popup_70bde9b48025170bb9724bacec3ffbfd)
+        ;
+
+        
+    
+    
+            circle_marker_be60564a0872c734ced367daad36e000.bindTooltip(
+                `<div>
+                     🛢️ Tanker - 14.7kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_7435e6d41ebb66343a8f2858abdb25c5 = L.polyline(
+                [[26.406199586757616, 56.20199596636886], [26.39907241878845, 56.20901048536444]],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "darkred", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_8952c38b5b77629029dfd8c97fc454c0 = L.circleMarker(
+                [26.414595979233845, 56.15246914421694],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_c8f0ed80f22ad41068d79ac6509b1963 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_86ff418ba4fbb2b72731a1edca014bc6 = $(`<div id="html_86ff418ba4fbb2b72731a1edca014bc6" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>📦 Vessel 240000023</h4>                 <b>Type:</b> Cargo<br>                 <b>Speed:</b> 15.1 knots<br>                 <b>Course:</b> 132°<br>                 <b>Heading:</b> 131°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 251m<br>                 <b>Draft:</b> 13.1m<br>                 <b>Flag:</b> KW<br>                 <b>Destination:</b> Basra<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.4146°, 56.1525°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_c8f0ed80f22ad41068d79ac6509b1963.setContent(html_86ff418ba4fbb2b72731a1edca014bc6);
+            
+        
+
+        circle_marker_8952c38b5b77629029dfd8c97fc454c0.bindPopup(popup_c8f0ed80f22ad41068d79ac6509b1963)
+        ;
+
+        
+    
+    
+            circle_marker_8952c38b5b77629029dfd8c97fc454c0.bindTooltip(
+                `<div>
+                     📦 Cargo - 15.1kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_fca91dfe217138a8268594c7cabbbb49 = L.polyline(
+                [[26.414595979233845, 56.15246914421694], [26.408079545783295, 56.16005439932699]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_b34bfb637a495d2205660557806a419c = L.circleMarker(
+                [26.384677812476323, 56.17005798748019],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_d2c27411c7f48494f9ca4060aa989692 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_6e6138f86f05406546651b26fc20f9d4 = $(`<div id="html_6e6138f86f05406546651b26fc20f9d4" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>🚢 Vessel 240000024</h4>                 <b>Type:</b> Container<br>                 <b>Speed:</b> 19.6 knots<br>                 <b>Course:</b> 149°<br>                 <b>Heading:</b> 150°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 146m<br>                 <b>Draft:</b> 17.2m<br>                 <b>Flag:</b> IR<br>                 <b>Destination:</b> Dammam<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.3847°, 56.1701°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_d2c27411c7f48494f9ca4060aa989692.setContent(html_6e6138f86f05406546651b26fc20f9d4);
+            
+        
+
+        circle_marker_b34bfb637a495d2205660557806a419c.bindPopup(popup_d2c27411c7f48494f9ca4060aa989692)
+        ;
+
+        
+    
+    
+            circle_marker_b34bfb637a495d2205660557806a419c.bindTooltip(
+                `<div>
+                     🚢 Container - 19.6kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_270f87d77adb78a0c1709a119d5c46c7 = L.polyline(
+                [[26.384677812476323, 56.17005798748019], [26.37601227382847, 56.17504882307582]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_98374d5561f9106acbcad30aedafbe32 = L.circleMarker(
+                [26.388956478669378, 56.238871577549574],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_4f378a2a17db2e1c2a7c21cc96753e0d = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_ddec39669f6ae464b2cbd7be15c9171a = $(`<div id="html_ddec39669f6ae464b2cbd7be15c9171a" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>⚓ Vessel 240000025</h4>                 <b>Type:</b> Military<br>                 <b>Speed:</b> 21.8 knots<br>                 <b>Course:</b> 140°<br>                 <b>Heading:</b> 137°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 391m<br>                 <b>Draft:</b> 11.8m<br>                 <b>Flag:</b> SA<br>                 <b>Destination:</b> Dubai<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.3890°, 56.2389°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_4f378a2a17db2e1c2a7c21cc96753e0d.setContent(html_ddec39669f6ae464b2cbd7be15c9171a);
+            
+        
+
+        circle_marker_98374d5561f9106acbcad30aedafbe32.bindPopup(popup_4f378a2a17db2e1c2a7c21cc96753e0d)
+        ;
+
+        
+    
+    
+            circle_marker_98374d5561f9106acbcad30aedafbe32.bindTooltip(
+                `<div>
+                     ⚓ Military - 21.8kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_173e8a5e4101eda17ea5407c3c961db3 = L.polyline(
+                [[26.388956478669378, 56.238871577549574], [26.381676468728237, 56.24572733828467]],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_b6aa867bd2b75e833d193dce05d30953 = L.circleMarker(
+                [26.377371686615156, 56.19471464558679],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_6ffd18af8488a981582ca1ffcb4d3ea4 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_b7128c0f764c3e32449e6f82422e10e7 = $(`<div id="html_b7128c0f764c3e32449e6f82422e10e7" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>🚢 Vessel 240000026</h4>                 <b>Type:</b> Container<br>                 <b>Speed:</b> 16.2 knots<br>                 <b>Course:</b> 137°<br>                 <b>Heading:</b> 133°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 385m<br>                 <b>Draft:</b> 18.2m<br>                 <b>Flag:</b> QA<br>                 <b>Destination:</b> Kuwait<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.3774°, 56.1947°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_6ffd18af8488a981582ca1ffcb4d3ea4.setContent(html_b7128c0f764c3e32449e6f82422e10e7);
+            
+        
+
+        circle_marker_b6aa867bd2b75e833d193dce05d30953.bindPopup(popup_6ffd18af8488a981582ca1ffcb4d3ea4)
+        ;
+
+        
+    
+    
+            circle_marker_b6aa867bd2b75e833d193dce05d30953.bindTooltip(
+                `<div>
+                     🚢 Container - 16.2kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_bddfdb314491025df0e25477f557b377 = L.polyline(
+                [[26.377371686615156, 56.19471464558679], [26.370590849732356, 56.20206449260349]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_8cd359ac3a29736faac99c007fb96be9 = L.circleMarker(
+                [26.40395907660058, 56.2212249405829],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_b93598435703a9f6ca5e5cb4fc170380 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_33878d5b951249efac2468cf46e93c1e = $(`<div id="html_33878d5b951249efac2468cf46e93c1e" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>🚤 Vessel 240000027</h4>                 <b>Type:</b> Patrol<br>                 <b>Speed:</b> 28.6 knots<br>                 <b>Course:</b> 130°<br>                 <b>Heading:</b> 131°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 208m<br>                 <b>Draft:</b> 20.1m<br>                 <b>Flag:</b> QA<br>                 <b>Destination:</b> Kuwait<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.4040°, 56.2212°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_b93598435703a9f6ca5e5cb4fc170380.setContent(html_33878d5b951249efac2468cf46e93c1e);
+            
+        
+
+        circle_marker_8cd359ac3a29736faac99c007fb96be9.bindPopup(popup_b93598435703a9f6ca5e5cb4fc170380)
+        ;
+
+        
+    
+    
+            circle_marker_8cd359ac3a29736faac99c007fb96be9.bindTooltip(
+                `<div>
+                     🚤 Patrol - 28.6kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_6f830526c2b330985d1aaea68d64639a = L.polyline(
+                [[26.40395907660058, 56.2212249405829], [26.397412586855125, 56.22878427071279]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_04cbce9edc4c1117f955c95c55897f81 = L.circleMarker(
+                [26.43841358332292, 56.15953215421795],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "brown", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_137c88e3e2ad39495ff29d6d1317dd74 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_cb9ad453d7d6b6d84a90a017ec16cea5 = $(`<div id="html_cb9ad453d7d6b6d84a90a017ec16cea5" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>⚫ Vessel 240000028</h4>                 <b>Type:</b> Bulk Carrier<br>                 <b>Speed:</b> 13.3 knots<br>                 <b>Course:</b> 137°<br>                 <b>Heading:</b> 134°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 208m<br>                 <b>Draft:</b> 16.8m<br>                 <b>Flag:</b> IR<br>                 <b>Destination:</b> Dammam<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.4384°, 56.1595°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_137c88e3e2ad39495ff29d6d1317dd74.setContent(html_cb9ad453d7d6b6d84a90a017ec16cea5);
+            
+        
+
+        circle_marker_04cbce9edc4c1117f955c95c55897f81.bindPopup(popup_137c88e3e2ad39495ff29d6d1317dd74)
+        ;
+
+        
+    
+    
+            circle_marker_04cbce9edc4c1117f955c95c55897f81.bindTooltip(
+                `<div>
+                     ⚫ Bulk_Carrier - 13.3kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_dd309923ef2a27e8d6288f215be74efd = L.polyline(
+                [[26.43841358332292, 56.15953215421795], [26.431499441042554, 56.166756739778855]],
+                {"bubblingMouseEvents": true, "color": "brown", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "brown", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_f1ec88808dfa87453306fe166debc4b3 = L.circleMarker(
+                [26.410202761522523, 56.236602273737674],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "brown", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_a1aff2fcf9adb5788b41cb4cf3551d25 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_a6a0ed87dd8b524bf45af050910475cd = $(`<div id="html_a6a0ed87dd8b524bf45af050910475cd" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>⚫ Vessel 240000029</h4>                 <b>Type:</b> Bulk Carrier<br>                 <b>Speed:</b> 12.6 knots<br>                 <b>Course:</b> 119°<br>                 <b>Heading:</b> 118°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 222m<br>                 <b>Draft:</b> 15.1m<br>                 <b>Flag:</b> KW<br>                 <b>Destination:</b> Dubai<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.4102°, 56.2366°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_a1aff2fcf9adb5788b41cb4cf3551d25.setContent(html_a6a0ed87dd8b524bf45af050910475cd);
+            
+        
+
+        circle_marker_f1ec88808dfa87453306fe166debc4b3.bindPopup(popup_a1aff2fcf9adb5788b41cb4cf3551d25)
+        ;
+
+        
+    
+    
+            circle_marker_f1ec88808dfa87453306fe166debc4b3.bindTooltip(
+                `<div>
+                     ⚫ Bulk_Carrier - 12.6kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_8e3035036c54f61a9fd4d71090baa2ee = L.polyline(
+                [[26.410202761522523, 56.236602273737674], [26.40556526338251, 56.24546193575162]],
+                {"bubblingMouseEvents": true, "color": "brown", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "brown", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_7ca7e12df5d4dbfa17557f953ab191d4 = L.circleMarker(
+                [26.964653428537897, 56.3115556561595],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_04f5481da4514072d41372e16bad5e0c = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_497a6eab5b7764db94c2d5575007f6cf = $(`<div id="html_497a6eab5b7764db94c2d5575007f6cf" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>🛢️ Vessel 240000030</h4>                 <b>Type:</b> Tanker<br>                 <b>Speed:</b> 13.2 knots<br>                 <b>Course:</b> 38°<br>                 <b>Heading:</b> 41°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 369m<br>                 <b>Draft:</b> 17.6m<br>                 <b>Flag:</b> KW<br>                 <b>Destination:</b> Dammam<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.9647°, 56.3116°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_04f5481da4514072d41372e16bad5e0c.setContent(html_497a6eab5b7764db94c2d5575007f6cf);
+            
+        
+
+        circle_marker_7ca7e12df5d4dbfa17557f953ab191d4.bindPopup(popup_04f5481da4514072d41372e16bad5e0c)
+        ;
+
+        
+    
+    
+            circle_marker_7ca7e12df5d4dbfa17557f953ab191d4.bindTooltip(
+                `<div>
+                     🛢️ Tanker - 13.2kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_587de5a9d6f13c09632f2090dc3825fd = L.polyline(
+                [[26.964653428537897, 56.3115556561595], [26.972154454198186, 56.31816887126591]],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "darkred", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_7f768a4eff46a1e41f87b1cb14496fa2 = L.circleMarker(
+                [26.9677379944097, 56.32549686198353],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_ea9d8266e5a27496261b8e1e2a01910c = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_58b7f81055b146c5e94ca89482af3296 = $(`<div id="html_58b7f81055b146c5e94ca89482af3296" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>🛢️ Vessel 240000031</h4>                 <b>Type:</b> Tanker<br>                 <b>Speed:</b> 9.8 knots<br>                 <b>Course:</b> 39°<br>                 <b>Heading:</b> 43°<br>                 <b>Status:</b> Constrained by Draft<br>                 <b>Length:</b> 126m<br>                 <b>Draft:</b> 12.8m<br>                 <b>Flag:</b> PK<br>                 <b>Destination:</b> Bandar Abbas<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.9677°, 56.3255°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_ea9d8266e5a27496261b8e1e2a01910c.setContent(html_58b7f81055b146c5e94ca89482af3296);
+            
+        
+
+        circle_marker_7f768a4eff46a1e41f87b1cb14496fa2.bindPopup(popup_ea9d8266e5a27496261b8e1e2a01910c)
+        ;
+
+        
+    
+    
+            circle_marker_7f768a4eff46a1e41f87b1cb14496fa2.bindTooltip(
+                `<div>
+                     🛢️ Tanker - 9.8kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_17d0c5f17872b20e1253b60b60993629 = L.polyline(
+                [[26.9677379944097, 56.32549686198353], [26.97500202723506, 56.33236954902079]],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "darkred", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_48bc1c3f3d16faaea4634759a529311b = L.circleMarker(
+                [27.03265791975501, 56.29489507732076],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "brown", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_2a69af4379fc27b4b01553420e6f39fa = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_6efab3f954983b5cdca4381b2b640fc2 = $(`<div id="html_6efab3f954983b5cdca4381b2b640fc2" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>⚫ Vessel 240000032</h4>                 <b>Type:</b> Bulk Carrier<br>                 <b>Speed:</b> 14.7 knots<br>                 <b>Course:</b> 32°<br>                 <b>Heading:</b> 33°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 335m<br>                 <b>Draft:</b> 12.2m<br>                 <b>Flag:</b> JP<br>                 <b>Destination:</b> Dubai<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 27.0327°, 56.2949°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_2a69af4379fc27b4b01553420e6f39fa.setContent(html_6efab3f954983b5cdca4381b2b640fc2);
+            
+        
+
+        circle_marker_48bc1c3f3d16faaea4634759a529311b.bindPopup(popup_2a69af4379fc27b4b01553420e6f39fa)
+        ;
+
+        
+    
+    
+            circle_marker_48bc1c3f3d16faaea4634759a529311b.bindTooltip(
+                `<div>
+                     ⚫ Bulk_Carrier - 14.7kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_4e1b597fc51e28e2ea062918ef320698 = L.polyline(
+                [[27.03265791975501, 56.29489507732076], [27.041034620489974, 56.30035684304229]],
+                {"bubblingMouseEvents": true, "color": "brown", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "brown", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_773baf36758e12f80f6dc68a06c9ab72 = L.circleMarker(
+                [26.985719892848405, 56.329880869906034],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_43d5def690b3bcf09649e51dd9a1b26b = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_f4a01eacd0293ded01552d2cc25ad711 = $(`<div id="html_f4a01eacd0293ded01552d2cc25ad711" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>📦 Vessel 240000033</h4>                 <b>Type:</b> Cargo<br>                 <b>Speed:</b> 17.0 knots<br>                 <b>Course:</b> 41°<br>                 <b>Heading:</b> 43°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 135m<br>                 <b>Draft:</b> 18.8m<br>                 <b>Flag:</b> QA<br>                 <b>Destination:</b> Bandar Abbas<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.9857°, 56.3299°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_43d5def690b3bcf09649e51dd9a1b26b.setContent(html_f4a01eacd0293ded01552d2cc25ad711);
+            
+        
+
+        circle_marker_773baf36758e12f80f6dc68a06c9ab72.bindPopup(popup_43d5def690b3bcf09649e51dd9a1b26b)
+        ;
+
+        
+    
+    
+            circle_marker_773baf36758e12f80f6dc68a06c9ab72.bindTooltip(
+                `<div>
+                     📦 Cargo - 17.0kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_65ddd1337af2aeae16231daa4a93918b = L.polyline(
+                [[26.985719892848405, 56.329880869906034], [26.992973672390175, 56.336764377904096]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_d9816ccfbae5c67e9ab908bd70f58bdd = L.circleMarker(
+                [26.976015535004493, 56.336006571247566],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_ba39387efb8167501bbeee1e9e4b9644 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_3de36ec5e51c136adf7c918969b7780a = $(`<div id="html_3de36ec5e51c136adf7c918969b7780a" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>🛢️ Vessel 240000034</h4>                 <b>Type:</b> Tanker<br>                 <b>Speed:</b> 11.6 knots<br>                 <b>Course:</b> 29°<br>                 <b>Heading:</b> 34°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 115m<br>                 <b>Draft:</b> 17.6m<br>                 <b>Flag:</b> JP<br>                 <b>Destination:</b> Bandar Abbas<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.9760°, 56.3360°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_ba39387efb8167501bbeee1e9e4b9644.setContent(html_3de36ec5e51c136adf7c918969b7780a);
+            
+        
+
+        circle_marker_d9816ccfbae5c67e9ab908bd70f58bdd.bindPopup(popup_ba39387efb8167501bbeee1e9e4b9644)
+        ;
+
+        
+    
+    
+            circle_marker_d9816ccfbae5c67e9ab908bd70f58bdd.bindTooltip(
+                `<div>
+                     🛢️ Tanker - 11.6kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_a0072f35fc556be8a2cd4a1778282e74 = L.polyline(
+                [[26.976015535004493, 56.336006571247566], [26.984332919666716, 56.341558247785386]],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "darkred", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_291e9f1ccdbd102da1b2e0e0d4707f16 = L.circleMarker(
+                [26.964074962639003, 56.30165556138459],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_306f9fc4c8eef18a5792083d30075a41 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_b710a3acd620899f086423667957b46b = $(`<div id="html_b710a3acd620899f086423667957b46b" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>📦 Vessel 240000035</h4>                 <b>Type:</b> Cargo<br>                 <b>Speed:</b> 17.5 knots<br>                 <b>Course:</b> 49°<br>                 <b>Heading:</b> 49°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 332m<br>                 <b>Draft:</b> 17.6m<br>                 <b>Flag:</b> KW<br>                 <b>Destination:</b> Basra<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.9641°, 56.3017°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_306f9fc4c8eef18a5792083d30075a41.setContent(html_b710a3acd620899f086423667957b46b);
+            
+        
+
+        circle_marker_291e9f1ccdbd102da1b2e0e0d4707f16.bindPopup(popup_306f9fc4c8eef18a5792083d30075a41)
+        ;
+
+        
+    
+    
+            circle_marker_291e9f1ccdbd102da1b2e0e0d4707f16.bindTooltip(
+                `<div>
+                     📦 Cargo - 17.5kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_c600723690ed0614bca245d6cf44f1fe = L.polyline(
+                [[26.964074962639003, 56.30165556138459], [26.970587489803556, 56.30924417060704]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_06d3e67b0fd860e28812492a04b52d29 = L.circleMarker(
+                [27.035440117084917, 56.26779533158603],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_d31596a86a14bd6c9fb4606a0b1cd57b = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_f04752cfa4b1fe638ef958385be2daf3 = $(`<div id="html_f04752cfa4b1fe638ef958385be2daf3" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>⛽ Vessel 240000036</h4>                 <b>Type:</b> Lpg Tanker<br>                 <b>Speed:</b> 14.4 knots<br>                 <b>Course:</b> 29°<br>                 <b>Heading:</b> 29°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 163m<br>                 <b>Draft:</b> 13.3m<br>                 <b>Flag:</b> QA<br>                 <b>Destination:</b> Basra<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 27.0354°, 56.2678°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_d31596a86a14bd6c9fb4606a0b1cd57b.setContent(html_f04752cfa4b1fe638ef958385be2daf3);
+            
+        
+
+        circle_marker_06d3e67b0fd860e28812492a04b52d29.bindPopup(popup_d31596a86a14bd6c9fb4606a0b1cd57b)
+        ;
+
+        
+    
+    
+            circle_marker_06d3e67b0fd860e28812492a04b52d29.bindTooltip(
+                `<div>
+                     ⛽ Lpg_Tanker - 14.4kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_bb5b4c39ae7e60729f73bacab45f456c = L.polyline(
+                [[27.035440117084917, 56.26779533158603], [27.04422414372034, 56.27257454449907]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_b1e92a16d464fb9ec2fed867f0952ea5 = L.circleMarker(
+                [27.000363852188126, 56.30604540142627],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_42c63b2e8144a36d9b6291e05855dd5b = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_b0f8131874e2ec2f01cdd7b3105ad3cb = $(`<div id="html_b0f8131874e2ec2f01cdd7b3105ad3cb" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>🚢 Vessel 240000037</h4>                 <b>Type:</b> Container<br>                 <b>Speed:</b> 18.7 knots<br>                 <b>Course:</b> 29°<br>                 <b>Heading:</b> 28°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 299m<br>                 <b>Draft:</b> 8.9m<br>                 <b>Flag:</b> JP<br>                 <b>Destination:</b> Dubai<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 27.0004°, 56.3060°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_42c63b2e8144a36d9b6291e05855dd5b.setContent(html_b0f8131874e2ec2f01cdd7b3105ad3cb);
+            
+        
+
+        circle_marker_b1e92a16d464fb9ec2fed867f0952ea5.bindPopup(popup_42c63b2e8144a36d9b6291e05855dd5b)
+        ;
+
+        
+    
+    
+            circle_marker_b1e92a16d464fb9ec2fed867f0952ea5.bindTooltip(
+                `<div>
+                     🚢 Container - 18.7kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_35e984f1f913a08792e35e2d29a89537 = L.polyline(
+                [[27.000363852188126, 56.30604540142627], [27.009167750907057, 56.31078790786768]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_faed1afea90c9024d418292e0c3dcf03 = L.circleMarker(
+                [26.99074460847649, 56.29391203934444],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_363cf9762f2a600af1890e1363c610b5 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_c29976b9008aa509fbcb050c53921fdd = $(`<div id="html_c29976b9008aa509fbcb050c53921fdd" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>⛽ Vessel 240000038</h4>                 <b>Type:</b> Lpg Tanker<br>                 <b>Speed:</b> 12.3 knots<br>                 <b>Course:</b> 62°<br>                 <b>Heading:</b> 57°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 331m<br>                 <b>Draft:</b> 21.7m<br>                 <b>Flag:</b> IR<br>                 <b>Destination:</b> Dammam<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.9907°, 56.2939°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_363cf9762f2a600af1890e1363c610b5.setContent(html_c29976b9008aa509fbcb050c53921fdd);
+            
+        
+
+        circle_marker_faed1afea90c9024d418292e0c3dcf03.bindPopup(popup_363cf9762f2a600af1890e1363c610b5)
+        ;
+
+        
+    
+    
+            circle_marker_faed1afea90c9024d418292e0c3dcf03.bindTooltip(
+                `<div>
+                     ⛽ Lpg_Tanker - 12.3kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_81a0bf12fdb85d4130560cde41e79c0f = L.polyline(
+                [[26.99074460847649, 56.29391203934444], [26.99615143801049, 56.30232430386657]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_29c0c15a15e1aea794ab5bd92192af8a = L.circleMarker(
+                [26.952448999368347, 56.31120674390581],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "brown", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_e2d0aea5f877cf124557c6b3e024fb43 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_b8c3a144548974f4d70720f664afa4f6 = $(`<div id="html_b8c3a144548974f4d70720f664afa4f6" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>⚫ Vessel 240000039</h4>                 <b>Type:</b> Bulk Carrier<br>                 <b>Speed:</b> 15.1 knots<br>                 <b>Course:</b> 64°<br>                 <b>Heading:</b> 60°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 330m<br>                 <b>Draft:</b> 14.5m<br>                 <b>Flag:</b> QA<br>                 <b>Destination:</b> Bandar Abbas<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.9524°, 56.3112°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_e2d0aea5f877cf124557c6b3e024fb43.setContent(html_b8c3a144548974f4d70720f664afa4f6);
+            
+        
+
+        circle_marker_29c0c15a15e1aea794ab5bd92192af8a.bindPopup(popup_e2d0aea5f877cf124557c6b3e024fb43)
+        ;
+
+        
+    
+    
+            circle_marker_29c0c15a15e1aea794ab5bd92192af8a.bindTooltip(
+                `<div>
+                     ⚫ Bulk_Carrier - 15.1kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_456c2a7949837bcc1ff909f5c8d1d449 = L.polyline(
+                [[26.952448999368347, 56.31120674390581], [26.95737523456489, 56.319909169245236]],
+                {"bubblingMouseEvents": true, "color": "brown", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "brown", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_d9762792b47aa352e4b6aa8966c613c1 = L.circleMarker(
+                [26.112014459877063, 56.203545348343205],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "brown", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_2481bb248876a086f81228ab37b28ee1 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_f78aab5193eaf074a57e5be517a06661 = $(`<div id="html_f78aab5193eaf074a57e5be517a06661" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>⚫ Vessel 240000040</h4>                 <b>Type:</b> Bulk Carrier<br>                 <b>Speed:</b> 15.3 knots<br>                 <b>Course:</b> 281°<br>                 <b>Heading:</b> 278°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 169m<br>                 <b>Draft:</b> 17.9m<br>                 <b>Flag:</b> OM<br>                 <b>Destination:</b> Basra<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.1120°, 56.2035°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_2481bb248876a086f81228ab37b28ee1.setContent(html_f78aab5193eaf074a57e5be517a06661);
+            
+        
+
+        circle_marker_d9762792b47aa352e4b6aa8966c613c1.bindPopup(popup_2481bb248876a086f81228ab37b28ee1)
+        ;
+
+        
+    
+    
+            circle_marker_d9762792b47aa352e4b6aa8966c613c1.bindTooltip(
+                `<div>
+                     ⚫ Bulk_Carrier - 15.3kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_e58d312360a41cbff57686279bc006a4 = L.polyline(
+                [[26.112014459877063, 56.203545348343205], [26.113446283369775, 56.19364838509755]],
+                {"bubblingMouseEvents": true, "color": "brown", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "brown", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_5f0c7ddeae7c0a237fa20af6a0b104c0 = L.circleMarker(
+                [26.062999301172088, 56.291355074645935],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "brown", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_4ef8963ddf72ef37360d20646f16521d = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_9613c11904c691fc9286a1baad7bc9d3 = $(`<div id="html_9613c11904c691fc9286a1baad7bc9d3" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>⚫ Vessel 240000041</h4>                 <b>Type:</b> Bulk Carrier<br>                 <b>Speed:</b> 14.4 knots<br>                 <b>Course:</b> 281°<br>                 <b>Heading:</b> 282°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 345m<br>                 <b>Draft:</b> 12.9m<br>                 <b>Flag:</b> KR<br>                 <b>Destination:</b> Dammam<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.0630°, 56.2914°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_4ef8963ddf72ef37360d20646f16521d.setContent(html_9613c11904c691fc9286a1baad7bc9d3);
+            
+        
+
+        circle_marker_5f0c7ddeae7c0a237fa20af6a0b104c0.bindPopup(popup_4ef8963ddf72ef37360d20646f16521d)
+        ;
+
+        
+    
+    
+            circle_marker_5f0c7ddeae7c0a237fa20af6a0b104c0.bindTooltip(
+                `<div>
+                     ⚫ Bulk_Carrier - 14.4kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_f3e4c3eb5ad6b697dcd358d9a1239669 = L.polyline(
+                [[26.062999301172088, 56.291355074645935], [26.065050892994744, 56.281567788454495]],
+                {"bubblingMouseEvents": true, "color": "brown", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "brown", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_48a84ab26e7ac70e96c709b725dbf212 = L.circleMarker(
+                [26.139792103959998, 56.23741665123531],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_187f29e16327e9400ceb5633399bd51d = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_fea91330169962883de21c00ebb23252 = $(`<div id="html_fea91330169962883de21c00ebb23252" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>🚢 Vessel 240000042</h4>                 <b>Type:</b> Container<br>                 <b>Speed:</b> 18.0 knots<br>                 <b>Course:</b> 283°<br>                 <b>Heading:</b> 286°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 260m<br>                 <b>Draft:</b> 19.3m<br>                 <b>Flag:</b> PK<br>                 <b>Destination:</b> Transit<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.1398°, 56.2374°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_187f29e16327e9400ceb5633399bd51d.setContent(html_fea91330169962883de21c00ebb23252);
+            
+        
+
+        circle_marker_48a84ab26e7ac70e96c709b725dbf212.bindPopup(popup_187f29e16327e9400ceb5633399bd51d)
+        ;
+
+        
+    
+    
+            circle_marker_48a84ab26e7ac70e96c709b725dbf212.bindTooltip(
+                `<div>
+                     🚢 Container - 18.0kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_2e8afc12d022744671365c0895fb8cc3 = L.polyline(
+                [[26.139792103959998, 56.23741665123531], [26.142496339747698, 56.22778923679505]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_797a1c2b1b8a0d8350f8b5ada959a7f3 = L.circleMarker(
+                [26.14848419003962, 56.23818312446384],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_e97aac9f6bd6a505641a1eb7f94f90ea = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_47f083b3550100032977ac241a3d7808 = $(`<div id="html_47f083b3550100032977ac241a3d7808" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>📦 Vessel 240000043</h4>                 <b>Type:</b> Cargo<br>                 <b>Speed:</b> 17.7 knots<br>                 <b>Course:</b> 257°<br>                 <b>Heading:</b> 253°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 324m<br>                 <b>Draft:</b> 14.4m<br>                 <b>Flag:</b> KW<br>                 <b>Destination:</b> Dubai<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.1485°, 56.2382°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_e97aac9f6bd6a505641a1eb7f94f90ea.setContent(html_47f083b3550100032977ac241a3d7808);
+            
+        
+
+        circle_marker_797a1c2b1b8a0d8350f8b5ada959a7f3.bindPopup(popup_e97aac9f6bd6a505641a1eb7f94f90ea)
+        ;
+
+        
+    
+    
+            circle_marker_797a1c2b1b8a0d8350f8b5ada959a7f3.bindTooltip(
+                `<div>
+                     📦 Cargo - 17.7kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_0bcf33d3551ef0d52c5de54fc86960c5 = L.polyline(
+                [[26.14848419003962, 56.23818312446384], [26.14550389815859, 56.22863755689015]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_f148d14f00b8491ab2ac38895b2c60ed = L.circleMarker(
+                [26.091580122449162, 56.21663875119207],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_1103aa71f8a92b60278935558d8b5ff0 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_598dd9b7d555e48e6cea3f2ae70e6397 = $(`<div id="html_598dd9b7d555e48e6cea3f2ae70e6397" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>🚤 Vessel 240000044</h4>                 <b>Type:</b> Patrol<br>                 <b>Speed:</b> 37.8 knots<br>                 <b>Course:</b> 264°<br>                 <b>Heading:</b> 261°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 399m<br>                 <b>Draft:</b> 8.2m<br>                 <b>Flag:</b> JP<br>                 <b>Destination:</b> Kuwait<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.0916°, 56.2166°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_1103aa71f8a92b60278935558d8b5ff0.setContent(html_598dd9b7d555e48e6cea3f2ae70e6397);
+            
+        
+
+        circle_marker_f148d14f00b8491ab2ac38895b2c60ed.bindPopup(popup_1103aa71f8a92b60278935558d8b5ff0)
+        ;
+
+        
+    
+    
+            circle_marker_f148d14f00b8491ab2ac38895b2c60ed.bindTooltip(
+                `<div>
+                     🚤 Patrol - 37.8kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_e878d31eddda4cc31e3887b8bef938f1 = L.polyline(
+                [[26.091580122449162, 56.21663875119207], [26.09000763360515, 56.206763161142085]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_25736c788b36255f50033f466b73d383 = L.circleMarker(
+                [26.083288655439976, 56.21512001199257],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_26aadf6ec54422a98d115e03b91ea92b = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_3eae228722797a84d1920eebc930cedc = $(`<div id="html_3eae228722797a84d1920eebc930cedc" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>🛢️ Vessel 240000045</h4>                 <b>Type:</b> Tanker<br>                 <b>Speed:</b> 12.8 knots<br>                 <b>Course:</b> 282°<br>                 <b>Heading:</b> 279°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 116m<br>                 <b>Draft:</b> 19.7m<br>                 <b>Flag:</b> KW<br>                 <b>Destination:</b> Basra<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.0833°, 56.2151°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_26aadf6ec54422a98d115e03b91ea92b.setContent(html_3eae228722797a84d1920eebc930cedc);
+            
+        
+
+        circle_marker_25736c788b36255f50033f466b73d383.bindPopup(popup_26aadf6ec54422a98d115e03b91ea92b)
+        ;
+
+        
+    
+    
+            circle_marker_25736c788b36255f50033f466b73d383.bindTooltip(
+                `<div>
+                     🛢️ Tanker - 12.8kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_e06b57aaf336767398871bd6e229847b = L.polyline(
+                [[26.083288655439976, 56.21512001199257], [26.08491797442447, 56.205253638816636]],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "darkred", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_c4215cbf6e51fdfe66f630a3992fea9f = L.circleMarker(
+                [26.072036698767164, 56.256865517823904],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_d5002d9685393905a2eff2d7b166f597 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_d927964267adcf621163e5821c939cd2 = $(`<div id="html_d927964267adcf621163e5821c939cd2" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>⛽ Vessel 240000046</h4>                 <b>Type:</b> Lpg Tanker<br>                 <b>Speed:</b> 14.6 knots<br>                 <b>Course:</b> 261°<br>                 <b>Heading:</b> 257°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 296m<br>                 <b>Draft:</b> 8.2m<br>                 <b>Flag:</b> JP<br>                 <b>Destination:</b> Dammam<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.0720°, 56.2569°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_d5002d9685393905a2eff2d7b166f597.setContent(html_d927964267adcf621163e5821c939cd2);
+            
+        
+
+        circle_marker_c4215cbf6e51fdfe66f630a3992fea9f.bindPopup(popup_d5002d9685393905a2eff2d7b166f597)
+        ;
+
+        
+    
+    
+            circle_marker_c4215cbf6e51fdfe66f630a3992fea9f.bindTooltip(
+                `<div>
+                     ⛽ Lpg_Tanker - 14.6kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_714bf2a0a9d57ddb3382d4f69621d50c = L.polyline(
+                [[26.072036698767164, 56.256865517823904], [26.069825854223456, 56.24711297116144]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var circle_marker_c0760f7961364e65dea6713669b84133 = L.circleMarker(
+                [26.102692170849984, 56.21534337309669],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_c6225a06ea4dec1e051529baaa7cbbd3 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_3e47d58aa1126689391355e3173fd05b = $(`<div id="html_3e47d58aa1126689391355e3173fd05b" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px;">                 <h4>🚢 Vessel 240000047</h4>                 <b>Type:</b> Container<br>                 <b>Speed:</b> 21.1 knots<br>                 <b>Course:</b> 277°<br>                 <b>Heading:</b> 278°<br>                 <b>Status:</b> Under Way Using Engine<br>                 <b>Length:</b> 287m<br>                 <b>Draft:</b> 11.3m<br>                 <b>Flag:</b> KR<br>                 <b>Destination:</b> Bandar Abbas<br>                 <b>Source:</b> synthetic_enhanced<br>                 <b>Position:</b> 26.1027°, 56.2153°<br>                 <b>Last Update:</b> 2025-06-22T13:13:11             </div>             </div>`)[0];
+                popup_c6225a06ea4dec1e051529baaa7cbbd3.setContent(html_3e47d58aa1126689391355e3173fd05b);
+            
+        
+
+        circle_marker_c0760f7961364e65dea6713669b84133.bindPopup(popup_c6225a06ea4dec1e051529baaa7cbbd3)
+        ;
+
+        
+    
+    
+            circle_marker_c0760f7961364e65dea6713669b84133.bindTooltip(
+                `<div>
+                     🚢 Container - 21.1kn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_7fab622e4a05fb41f10df89d7c374174 = L.polyline(
+                [[26.102692170849984, 56.21534337309669], [26.104020980138266, 56.20543205300926]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+            var poly_line_4769b47285558ef409ca4be3e710de8d = L.polyline(
+                [[26.15, 56.45], [26.25, 56.35], [26.35, 56.25]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.4, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_db3c10a1806abfafa9c169e4887e79a6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_49c0a5cf613c4e3c242c959d5ba94202 = $(`<div id="html_49c0a5cf613c4e3c242c959d5ba94202" style="width: 100.0%; height: 100.0%;">Eastbound Shipping Lane (Entering Persian Gulf)</div>`)[0];
+                popup_db3c10a1806abfafa9c169e4887e79a6.setContent(html_49c0a5cf613c4e3c242c959d5ba94202);
+            
+        
+
+        poly_line_4769b47285558ef409ca4be3e710de8d.bindPopup(popup_db3c10a1806abfafa9c169e4887e79a6)
+        ;
+
+        
+    
+    
+            var poly_line_c83a190aa743a010a755e80e5ec52cde = L.polyline(
+                [[26.35, 56.35], [26.25, 56.25], [26.15, 56.15]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.4, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+        
+    
+        var popup_4ef1da0be6b2a9d06e08efffd864b5cb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_33aaeb050ae4469e3619859a223e8e3b = $(`<div id="html_33aaeb050ae4469e3619859a223e8e3b" style="width: 100.0%; height: 100.0%;">Westbound Shipping Lane (Exiting Persian Gulf)</div>`)[0];
+                popup_4ef1da0be6b2a9d06e08efffd864b5cb.setContent(html_33aaeb050ae4469e3619859a223e8e3b);
+            
+        
+
+        poly_line_c83a190aa743a010a755e80e5ec52cde.bindPopup(popup_4ef1da0be6b2a9d06e08efffd864b5cb)
+        ;
+
+        
+    
+    
+            var layer_control_cc90be561d918262554c2e0afdd92691_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_1416cb2c98d54d89b98c94f55a23b9dc,
+                    "Satellite" : tile_layer_7fbdaf85ecc33bca94cc5c94bf370d6a,
+                },
+                overlays :  {
+                },
+            };
+            let layer_control_cc90be561d918262554c2e0afdd92691 = L.control.layers(
+                layer_control_cc90be561d918262554c2e0afdd92691_layers.base_layers,
+                layer_control_cc90be561d918262554c2e0afdd92691_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_4d8e555bf5ad36669fb1aefa554b443b);
+
+        
+</script>
+</html>

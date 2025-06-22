@@ -1,0 +1,69 @@
+# Core dependencies
+fastapi>=0.104.1
+uvicorn>=0.24.0
+pydantic>=2.5.0
+python-dotenv>=1.0.0
+
+# Data processing and analytics
+pandas>=2.0.0
+numpy>=1.24.0
+scipy>=1.10.0
+scikit-learn>=1.3.0
+
+# Machine learning and AI (optional - can be installed separately if needed)
+# tensorflow>=2.13.0
+# torch>=2.0.0
+# transformers>=4.30.0
+xgboost>=2.0.0
+
+# Time series and forecasting
+# prophet>=1.1.0  # Can be complex to install
+statsmodels>=0.14.0
+
+# Database and storage
+sqlalchemy>=2.0.0
+# psycopg2-binary>=2.9.0  # PostgreSQL - install separately if needed
+redis>=5.0.0
+# influxdb-client>=1.38.0  # Install separately if needed
+
+# Geospatial processing
+# geopandas>=0.14.0  # Complex dependencies
+shapely>=2.0.0
+# pyproj>=3.6.0  # Can be complex to install
+# folium>=0.15.0
+
+# Real-time data processing
+# kafka-python>=2.0.0  # Install separately if needed
+websockets>=12.0
+# asyncio-mqtt>=0.16.0
+
+# Web scraping and APIs
+requests>=2.31.0
+aiohttp>=3.9.0
+beautifulsoup4>=4.12.0
+
+# Visualization
+plotly>=5.17.0
+# dash>=2.16.0  # Install separately if needed
+matplotlib>=3.7.0
+seaborn>=0.13.0
+# bokeh>=3.3.0
+
+# Testing and development
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+black>=23.0.0
+flake8>=6.0.0
+
+# Monitoring and logging
+structlog>=23.0.0
+# prometheus-client>=0.19.0
+
+# Blockchain integration (optional)
+# web3>=6.12.0
+
+# Additional utilities
+click>=8.1.0
+pyyaml>=6.0.0
+jinja2>=3.1.0
+# celery>=5.3.0  # Install separately if needed 

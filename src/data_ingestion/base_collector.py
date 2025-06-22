@@ -9,13 +9,24 @@ import time
 from abc import ABC, abstractmethod
 from datetime import datetime
 from typing import Dict, List, Optional, Any, AsyncGenerator
-from kafka import KafkaProducer
-import structlog
 
-from ..core.config import settings, AIS_SOURCES
+# Optional imports
+try:
+    from kafka import KafkaProducer
+    KAFKA_AVAILABLE = True
+except ImportError:
+    KAFKA_AVAILABLE = False
+
+try:
+    import structlog
+    STRUCTLOG_AVAILABLE = True
+    logger = structlog.get_logger(__name__)
+except ImportError:
+    STRUCTLOG_AVAILABLE = False
+    logger = logging.getLogger(__name__)
+
+from ..core.config import AIS_SOURCES
 from ..models.vessel import VesselPositionCreate
-
-logger = structlog.get_logger(__name__)
 
 
 class BaseAISCollector(ABC):
@@ -31,7 +42,8 @@ class BaseAISCollector(ABC):
         self.kafka_producer = None
         
         # Initialize Kafka producer
-        self._init_kafka_producer()
+        if KAFKA_AVAILABLE:
+            self._init_kafka_producer()
         
         # Rate limiting
         self.rate_limit = AIS_SOURCES.get(source_name, {}).get('rate_limit', 60)
@@ -39,9 +51,11 @@ class BaseAISCollector(ABC):
     
     def _init_kafka_producer(self):
         """Initialize Kafka producer for streaming data"""
+        if not KAFKA_AVAILABLE:
+            return
         try:
             self.kafka_producer = KafkaProducer(
-                bootstrap_servers=settings.kafka_bootstrap_servers,
+                bootstrap_servers=['localhost:9092'],  # Default kafka servers
                 value_serializer=lambda v: json.dumps(v).encode('utf-8'),
                 key_serializer=lambda k: k.encode('utf-8') if k else None
             )
@@ -62,7 +76,7 @@ class BaseAISCollector(ABC):
         if self.kafka_producer:
             try:
                 self.kafka_producer.send(
-                    settings.kafka_ais_topic,
+                    'ais_data',  # Default topic name
                     key=str(ais_data.get('mmsi')),
                     value=ais_data
                 )
@@ -123,4 +137,16 @@ class BaseAISCollector(ABC):
             'error_count': self.error_count,
             'error_rate': self.error_count / max(self.request_count, 1),
             'last_request_time': self.last_request_time
-        } 
+        }
+
+
+class BaseCollector(ABC):
+    """Simple base collector for real AIS data integration"""
+    
+    def __init__(self, config: Dict[str, Any]):
+        self.config = config
+        
+    @abstractmethod
+    async def collect_data(self, region: Optional[str] = None) -> List[Any]:
+        """Collect data from the source"""
+        pass 

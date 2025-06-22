@@ -90,43 +90,75 @@ def get_settings() -> Settings:
 settings = get_settings()
 
 
-# AIS Data Source Configurations
+# AIS Data Source Configuration
 AIS_SOURCES = {
+    # Real AIS APIs (recommended)
+    "myshiptracking": {
+        "name": "MyShipTracking",
+        "url": "https://api.myshiptracking.com",
+        "api_key_required": True,
+        "free_tier": True,
+        "description": "Real-time terrestrial AIS data with free trial",
+        "coverage": "Global terrestrial AIS",
+        "rate_limit": "100 requests/minute",
+        "free_credits": 2000
+    },
+    "datalastic": {
+        "name": "Datalastic",
+        "url": "https://api.datalastic.com",
+        "api_key_required": True,
+        "free_tier": False,
+        "description": "Professional AIS data with 750,000+ ships",
+        "coverage": "Global maritime data",
+        "rate_limit": "2000 requests/minute",
+        "uptime": "99.8%"
+    },
     "aishub": {
-        "name": "AISHub Global Network",
-        "base_url": "http://data.aishub.net/ws.php",
-        "format": "json",
-        "rate_limit": 60,  # requests per minute
-        "coverage": "global"
+        "name": "AISHub",
+        "url": "https://www.aishub.net",
+        "api_key_required": False,
+        "free_tier": True,
+        "description": "Community-based AIS data sharing",
+        "coverage": "Global community data",
+        "requirement": "Contribute your own AIS data"
     },
-    "aisstream": {
-        "name": "AISStream.io WebSocket",
-        "websocket_url": "wss://stream.aisstream.io/v0/stream",
-        "format": "json",
-        "rate_limit": None,
-        "coverage": "global"
+    "vesselfinder": {
+        "name": "VesselFinder",
+        "url": "https://www.vesselfinder.com",
+        "api_key_required": True,
+        "free_tier": False,
+        "description": "Professional satellite and terrestrial AIS",
+        "coverage": "Global satellite + terrestrial"
     },
-    "marineplan": {
-        "name": "MarinePlan OpenShipData",
-        "base_url": "https://api.vesselfinder.com/",
-        "format": "json",
-        "rate_limit": 100,
-        "coverage": "global"
-    },
-    "digitraffic": {
-        "name": "Finnish Digitraffic",
-        "base_url": "https://meri.digitraffic.fi/api/v1/locations/",
-        "format": "json",
-        "rate_limit": 1000,
-        "coverage": "finland"
-    },
-    "dma": {
-        "name": "Danish Maritime Authority",
-        "base_url": "https://web.ais.dk/aisdata",
-        "format": "nmea",
-        "rate_limit": 500,
-        "coverage": "denmark"
+    
+    # Fallback/Demo sources
+    "synthetic": {
+        "name": "Synthetic Generator",
+        "description": "Generated realistic vessel data for testing",
+        "coverage": "All regions",
+        "api_key_required": False,
+        "free_tier": True
     }
+}
+
+# Real AIS API Configuration
+REAL_AIS_CONFIG = {
+    # MyShipTracking API (Free trial available)
+    "myshiptracking_api_key": os.getenv("MYSHIPTRACKING_API_KEY"),
+    "myshiptracking_secret_key": os.getenv("MYSHIPTRACKING_SECRET_KEY"),
+    "myshiptracking_base_url": "https://api.myshiptracking.com/api/v1",
+    
+    # Datalastic API (Paid service)
+    "datalastic_api_key": os.getenv("DATALASTIC_API_KEY"), 
+    "datalastic_base_url": "https://api.datalastic.com/api/v0",
+    
+    # Rate limiting
+    "rate_limit_delay": float(os.getenv("AIS_API_RATE_LIMIT", "1.0")),
+    "max_vessels_per_request": int(os.getenv("MAX_VESSELS_PER_REQUEST", "100")),
+    
+    # Fallback settings
+    "use_fallback_on_error": os.getenv("USE_FALLBACK_ON_ERROR", "true").lower() == "true",
+    "preferred_api": os.getenv("PREFERRED_AIS_API", "myshiptracking")  # myshiptracking, datalastic
 }
 
 # Major world ports with coordinates
